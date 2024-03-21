@@ -1,0 +1,292 @@
+<header class="sticky-top">
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img class="img-logo" src="/public/images/dream_logo3.png" alt="Logo-DreamSchool" width="80">
+            </a>
+
+            <ul class="d-flex flex-row gap-3 navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/editar_cursos">Cursos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn-home" href="/">
+                        <i class="fa-solid fa-house-chimney icon-home"></i>
+                    </a>
+                </li>          
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="bg-custom">
+    <section class="area-aluno">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex bg-danger rounded-5 align-options p-3">
+                    <form method="POST" action="/editar_ranking">
+                        <button class="btn btn-light rounded-5" name="addAluno">
+                            <i class="fa fa-add"></i>
+                            <span class="d-none d-md-inline">Adicionar aluno</span>
+                        </button>
+
+                        <button class="btn btn-light rounded-5" name="editAluno">
+                            <i class="fa fa-edit"></i>
+                            <span class="d-none d-md-inline">Editar aluno</span>
+                        </button>
+
+                        <button class="btn btn-light rounded-5" name="delAluno">
+                            <i class="fa fa-trash"></i>
+                            <span class="d-none d-md-inline">Deletar aluno</span>
+                        </button>
+
+                        <button class="btn btn-light rounded-5" name="sair">
+                            <i class="fa fa-user-minus"></i>
+                            <span class="d-none d-md-inline">Sair</span>
+                        </button>
+
+                        <?php
+                            if (isset($_POST['sair'])) {
+                                session_destroy();
+                                header('Location: /');
+                            }
+                        ?>
+                    </form>
+                </div>
+            </div>
+
+
+            <?php if (isset($_GET['aluno']) && $_GET['aluno'] == 'existe') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-warning rounded-5">
+                        <span>Aluno já existe!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'error') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex flex-column justify-content-center p-3 bg-danger text-white text-center mt-4 rounded-5">
+                        <div class="d-flex justify-content-center">
+                            <h4 class="mt-3 bg-white justify-content-center text-danger p-2 w-75 rounded-5 fw-bold">ERRO! - Digite os dados corretamente!</h4>
+                        </div>
+
+                        <div class="d-flex flex-column text-start mt-3 p-5 rounded-5 bg-white text-dark">
+                            <p class="mt-2 text-center fw-bold">DETALHES:</p>
+                            <p class="fst-italic">
+                                1 - Verifique se os campos estão preenchidos<br>
+                                2 - O ID deve conter apenas números<br>
+                                3 - O nome do aluno deve ser maior que 2<br>
+                                4 - Os pontos são numéricos _
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'adicionado') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-primary text-white rounded-5">
+                        <span>Aluno adicionado com sucesso!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'editado') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-primary rounded-5">
+                        <span>Aluno editado com sucesso!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'idexiste') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-warning rounded-5">
+                        <span>ID do aluno já existe!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'invalido') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-danger text-white rounded-5">
+                        <span>Aluno inválido, verifique se o ID e o nome do aluno existe!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['aluno']) && $_GET['aluno'] == 'excluido') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-primary text-white rounded-5">
+                        <span>Ranking do aluno excluído com sucesso!</span>
+                    </div>
+                </div>
+            <?php } else if (isset($_GET['excluir']) && $_GET['excluir'] == 'error') { ?>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center mt-4 p-2 bg-danger text-white rounded-5">
+                        <span>ID inválido ou vazio, insira o ID do aluno e tente novamente!</span>
+                    </div>
+                </div>
+            <?php } ?>
+
+
+            <?php if (isset($_POST['addAluno'])) { ?>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center text-center">
+                        <form class="form-control rounded-5 mt-3 p-4 w-100" method="post" action="/adicionar_aluno">
+                            <legend class="bg-dark rounded-5 text-light p-3">ADICIONAR ALUNO</legend>
+                            <div class="align-center">
+                                <label class="picture-aluno" for="upload-foto-aluno" tabindex="0">
+                                    <span class="fa fa-2x prev-pic-aluno">EM BREVE</span>
+                                </label>
+                                <input class="upload-img-aluno" type="file" accept="image/png, image/jpeg, image/jpg" name="fotoAluno" id="upload-foto-aluno">
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="w-75">
+                                    <label for="nome-aluno">Novo ID:</label>
+                                    <input class="form-control rounded-5 mb-3 text-center" type="text" name="idAluno">
+                                    <label for="nome-aluno">Nome do aluno</label>
+                                    <input class="form-control rounded-5 mb-3 text-center" type="text" name="nomeAluno">
+                                    <label for="nome-aluno">Pontuação inicial:</label>
+                                    <input class="form-control rounded-5 mb-4 text-center" type="text" name="pontuacaoAluno">
+                                    <button class="btn btn-danger rounded-5 p-3 w-100" name="btn-adicionar-aluno">Adicionar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center mt-3 mb-5">
+                        <div class="bg-white p-4 rounded-5 w-100">
+                            <div class="mx-auto text-center h2">
+                                <i class="fa fa-star text-warning"></i>Ranking<i class="fa fa-star text-warning"></i>
+                            </div>
+
+                            <?php $count = 0 ?>
+
+                            
+                                <div class="scroll">
+                                    <?php foreach ($this->view->alunos as $aluno) { ?>
+                                        <ol class="list-group rounded-5 mt-4">
+                                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="p-2">
+                                                    <span class="badge bg-dark rounded-pill fs-6" id="position"><?= $count = $count + 1 ?> º</span>
+                                                </div>
+
+                                                <div class="mx-auto">
+                                                    <div class="fw-semibold p-2"><?= $aluno['nome_aluno'] ?></div>
+                                                </div>
+
+                                                <div class="p-2">
+                                                    <span class="badge bg-danger rounded-pill fs-6"><?= $aluno['pontuacao_aluno'] ?></span>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    <?php } ?>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_POST['editAluno'])) { ?>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center text-center">
+                        <form class="form-control rounded-5 mt-3 p-4 w-100" method="post" action="/editar_aluno">
+                            <legend class="bg-dark rounded-5 text-light p-3">EDITAR ALUNO</legend>
+                            <div class="align-center">
+                                <label class="picture-aluno" for="upload-foto-aluno" tabindex="0">
+                                    <span class="fa fa-2x prev-pic-aluno">EM BREVE</span>
+                                </label>
+                                <input class="upload-img-aluno" type="file" accept="image/png, image/jpeg, image/jpg" name="fotoAluno" id="upload-foto-aluno">
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="w-75">
+                                    <label for="nome-aluno">ID do aluno:</label>
+                                    <input class="form-control rounded-5 mb-3 text-center" type="text" name="idAluno">
+                                    <label for="nome-aluno">Nome do aluno</label>
+                                    <input class="form-control rounded-5 mb-3 text-center" type="text" name="nomeAluno">
+                                    <label for="nome-aluno">Pontuação inicial:</label>
+                                    <input class="form-control rounded-5 mb-4 text-center" type="text" name="pontuacaoAluno">
+                                    <button class="btn btn-danger rounded-5 p-3 w-100" name="btn-alterar-aluno">Alterar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center mt-3 mb-5">
+                        <div class="bg-white p-4 rounded-5 w-100">
+                            <div class="mx-auto text-center h2">
+                                <i class="fa fa-star text-warning"></i>Ranking<i class="fa fa-star text-warning"></i>
+                            </div>
+
+                            <?php $count = 0 ?>
+
+                            <?php foreach ($this->view->alunos as $aluno) { ?>
+                                <ol class="list-group rounded-5 mt-4">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="p-2">
+                                            <span class="badge bg-dark rounded-pill fs-6" id="position"><?= $count = $count + 1 ?> º</span>
+                                        </div>
+
+                                        <div class="mx-auto">
+                                            <div class="fw-semibold p-2"><?= $aluno['nome_aluno'] ?></div>
+                                        </div>
+
+                                        <div class="p-2">
+                                            <span class="badge bg-danger rounded-pill fs-6"><?= $aluno['pontuacao_aluno'] ?></span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_POST['delAluno'])) { ?>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center text-center">
+                        <form class="form-control rounded-5 mt-3 p-4 w-100" method="post" action="/deletar_aluno">
+                            <legend class="bg-dark rounded-5 text-light p-3">DELETAR ALUNO</legend>
+                            <div class="align-center">
+                                <label class="picture-aluno" for="upload-foto-aluno" tabindex="0">
+                                    <span class="fa fa-2x prev-pic-aluno">EM BREVE</span>
+                                </label>
+                                <input class="upload-img-aluno" type="file" accept="image/png, image/jpeg, image/jpg" name="fotoAluno" id="upload-foto-aluno">
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="d-flex flex-column justify-content-center w-75">
+                                    <label for="nome-aluno">ID do aluno:</label>
+                                    <input class="form-control rounded-5 mb-5 text-center" type="text" name="idAluno">
+                                    <button class="btn btn-danger rounded-5 p-3 w-100" name="btn-deletar-aluno">Deletar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center mt-3 mb-5">
+                        <div class="bg-white p-4 rounded-5 w-100">
+                            <div class="mx-auto text-center h2">
+                                <i class="fa fa-star text-warning"></i>Ranking<i class="fa fa-star text-warning"></i>
+                            </div>
+
+                            <?php $count = 0 ?>
+
+                            <?php foreach ($this->view->alunos as $aluno) { ?>
+                                <ol class="list-group rounded-5 mt-4">
+                                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="p-2">
+                                            <span class="badge bg-dark rounded-pill fs-6" id="position"><?= $count = $count + 1 ?>º</span>
+                                        </div>
+
+                                        <div class="mx-auto">
+                                            <div class="fw-semibold p-2"><?= $aluno['nome_aluno'] ?></div>
+                                        </div>
+
+                                        <div class="p-2">
+                                            <span class="badge bg-danger rounded-pill fs-6"><?= $aluno['pontuacao_aluno'] ?></span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+</main>

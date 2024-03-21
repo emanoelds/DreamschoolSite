@@ -1,0 +1,25 @@
+@media (min-width: 250px) {
+    ol li .nome-aluno{
+        font-size: 14px;
+    }
+
+    ol li .num-result-rank{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 576px) {    
+    ol li .nome-aluno{
+        font-size: 16px;
+    }
+
+    ol li .num-result-rank{
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) { 
+    ol li .num-result-rank{
+        font-size: 20px;
+    }
+}

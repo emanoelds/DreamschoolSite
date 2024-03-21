@@ -1,0 +1,41 @@
+.upload-img-aluno{
+    display: none;
+}
+
+.picture-aluno{
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    background: #e0e0e0;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.picture-aluno:hover{
+    background: #000000;
+    color: #ffffff;
+    transition: 0.4s;
+}
+
+.align-center{
+    display: flex;
+    justify-content: center;
+}
+
+.align-options form{
+    display: flex;
+    gap: 40px;
+}
+
+.picture-img{
+    max-width: 100%;
+    border-radius: 200px;
+}
+
+.area-aluno{
+    padding: 50px 0;
+}

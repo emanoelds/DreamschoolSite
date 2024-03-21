@@ -1,0 +1,20 @@
+{
+	"name": "Dreamschool",
+	"require": {
+		"php": ">= 7.0",
+		"phpmailer/phpmailer": "^6.8.1"
+	},
+
+	"authors": [
+		{
+			"name": "Emanoel dos santos",
+			"email": "emanoelds2002@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"App\\": "App/",
+			"MF\\": "vendor/MF/"
+		}
+	}
+}

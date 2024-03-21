@@ -1,0 +1,58 @@
+<header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li>
+                    <form action="/editar_cursos" method="post">
+                        <button class="btn btn-custom rounded-5 mb-5" type="submit" name="sair"><i class="fa fa-user-minus"></i> Sair</button>
+                        <?php 
+                            if(isset($_POST['sair'])){ 
+                                session_destroy(); 
+                                header('location: /');
+                            } 
+                        ?>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12 d-flex bg-menu-cursos rounded-5 align-options p-3">
+                    <form class="d-flex gap-4" method="POST" action="/editar_ranking">
+                        <button class="btn btn-light rounded-5" name="addAluno">
+                            <i class="fa fa-add"></i>
+                            <span class="d-none d-md-inline">Adicionar Curso</span>
+                        </button>
+
+                        <button class="btn btn-light rounded-5" name="editAluno">
+                            <i class="fa fa-edit"></i>
+                            <span class="d-none d-md-inline">Editar Curso</span>
+                        </button>
+
+                        <button class="btn btn-light rounded-5" name="delAluno">
+                            <i class="fa fa-trash"></i>
+                            <span class="d-none d-md-inline">Excluir Curso</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                $.ajax({
+                    
+                })
+            </script>
+
+            <div class="row">
+                <form class="bg-secondary rounded-3 p-3" action="" method="post">
+                    <input type="text" placeholder="Nome do curso">
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

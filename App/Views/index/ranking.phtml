@@ -1,0 +1,158 @@
+<header>
+    <?php if(isset($_GET['login']) && $_GET['login'] == 'error'){ ?>
+        <div class="bg-danger text-light text-center p-2">Falha no login!</div>
+    <?php } ?>
+
+    <nav class="navbar navbar-expand-md navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img class="img-logo" src="/public/images/dream_logo3.png" alt="Logo-DreamSchool" width="80">
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-collapse">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn-home" href="/">
+                            <i class="fa-solid fa-house-chimney icon-home"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Área do aluno
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-custom">
+                            <li>
+                                <a class="dropdown-item" href="http://dreamschool.com.br/dkweb/">
+                                    Secretaria Digital
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="https://ead.dreamschool.com.br/metodo/login.php" target="_blank">
+                                    Plataforma EAD
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Info
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-custom">
+                            <li>
+                                <a class="dropdown-item" href="/quem_somos">Quem somos</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/contato">Contato</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ranking">Ranking</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/loja">Loja</a>
+                    </li>
+                    
+                    <li class="divisor"></li>
+
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-danger rounded-5" title="Login" data-bs-toggle="modal" data-bs-target="#modal-login">
+                            <i class="fa fa-user"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="bg-custom">
+    <!-- Modal -->
+    <div class="modal fade" id="modal-login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-5">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <form action="/cadastrar" method="post">
+                                    <input type="text" class="form-control mt-3 mb-3 rounded-5" name="usuarioAluno" placeholder="Usuário">
+                                    <input type="password" class="form-control mb-3 rounded-5" name="senhaAluno" placeholder="Senha">
+                                    <button type="submit" class="btn btn-dark rounded-5 w-100 mb-3" name="btn-login">Entrar</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <div class="w-50">
+                                    <p class="text-center">OU</p>
+                                    <a class="btn btn-danger rounded-5 w-100" href="/cadastre_se">Cadastrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-dark rounded-5" data-bs-dismiss="modal">Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center mt-4">
+                    <div class="bg-white p-4 rounded-5 w-100">
+                        <div class="mx-auto text-center h2">
+                            <i class="fa fa-star text-warning"></i>Ranking<i class="fa fa-star text-warning"></i>
+                        </div>
+
+                        <?php if($this->view->alunos == false){ ?>
+                            <span>Nenhum dado no momento!</span>
+                        <?php } ?>
+
+                        <?php $count = 0 ?>
+
+                        <?php foreach ($this->view->alunos as $aluno) { ?>
+                            <ol class="list-group rounded-5 mt-4">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="p-2 num-result-rank">
+                                        <span class="badge bg-dark rounded-pill" id="position"><?= $count = $count + 1 ?> º</span>
+                                    </div>
+
+                                    <div class="mx-auto nome-aluno">
+                                        <div class="fw-semibold p-2"><?= $aluno['nome_aluno'] ?></div>
+                                    </div>
+
+                                    <div class="p-2 num-result-rank">
+                                        <span class="badge bg-danger rounded-pill"><?= $aluno['pontuacao_aluno'] ?></span>
+                                    </div>
+                                </li>
+                            </ol>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

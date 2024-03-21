@@ -1,0 +1,169 @@
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-md navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img class="img-logo" src="/public/images/dream_logo3.png" alt="Logo-DreamSchool" width="80">
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-collapse">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn-home" href="/">
+                            <i class="fa-solid fa-house-chimney icon-home"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Área do aluno
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-custom">
+                            <li>
+                                <a class="dropdown-item" href="http://dreamschool.com.br/dkweb/">
+                                    Secretaria Digital
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="https://ead.dreamschool.com.br/metodo/login.php" target="_blank">
+                                    Plataforma EAD
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Info
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-custom">
+                            <li>
+                                <a class="dropdown-item" href="/quem_somos">Quem somos</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/contato">Contato</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ranking">Ranking</a>
+                    </li>
+
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="/loja">Loja</a>
+                    </li>
+                    -->
+
+                    <li class="divisor"></li>
+
+                    <li>
+                        <button type="button" class="btn btn-danger rounded-5" title="Login" data-bs-toggle="modal" data-bs-target="#modal-login">
+                            <i class="fa fa-user"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-5">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <form action="/login" method="post">
+                                    <input type="text" class="form-control mt-3 mb-3 rounded-5" name="usuarioAluno" placeholder="Usuário">
+                                    <input type="password" class="form-control mb-3 rounded-5" name="senhaAluno" placeholder="Senha">
+                                    <button type="submit" class="btn btn-dark rounded-5 w-100 mb-3" name="btn-login">Entrar</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <div class="w-50">
+                                    <p class="text-center">OU</p>
+                                    <a class="btn btn-danger rounded-5 w-100" href="/cadastre_se">Cadastrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-dark rounded-5" data-bs-dismiss="modal">Voltar</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-custom-cad">
+        <div class="container">
+            <?php if(isset($_GET['cadastrar']) && $_GET['cadastrar'] == 'error'){ ?>
+                <div class="col-12 d-flex justify-content-center mb-3">
+                    <h5 class="text-light bg-danger p-3 rounded-5">Falha no cadastro!</h5>
+                </div>
+            <?php }else if(isset($_GET['cadastro']) && $_GET['cadastro'] == 'existe'){ ?>
+                <div class="col-12 d-flex justify-content-center mb-3">
+                    <h5 class="text-light bg-danger p-3 rounded-5">Usuário já existe!</h5>
+                </div>
+            <?php } ?>
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <form class="d-flex flex-column bg-form-cad" action="/cadastrar" method="post">
+                        <fieldset>
+                            <legend class="text-center">Cadastrar</legend>
+                            <input type="text" class="form-control mb-3 rounded-3" name="nomeAluno" placeholder="Nome completo">                            
+                            <input type="date" class="form-control mb-3 rounded-3" name="aniverAluno">
+                            <input type="text" class="form-control mb-3 rounded-3" name="usuarioAluno" placeholder="Usuário">
+                            <input type="email" class="form-control mb-3 rounded-3" name="emailAluno" placeholder="E-mail">
+                            <input type="password" class="form-control mb-3 rounded-3" name="senhaAluno" placeholder="Senha">
+                            <input type="password" class="form-control mb-4 rounded-3" name="confirmaSenha" placeholder="Confirmar senha">
+
+                            <?php if(isset($_GET['verify']) && $_GET['verify'] == 'error'){ ?>
+                                <div class="d-flex flex-column">
+                                    <span class="text-danger">Erro ao confirmar senha! Verifique sua senha.</span>
+                                </div>
+                            <?php } ?>
+                            
+                            <div class="d-flex flex-column">
+                                <button type="submit" class="btn btn-danger rounded-5">Cadastrar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <!--
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <label class="picture-aluno" for="upload-foto-aluno" tabindex="0">
+                            <span class="fa fa-2x prev-pic-aluno">EM BREVE</span>
+                        </label>
+                        <input class="upload-img-aluno" type="file" accept="image/png, image/jpeg, image/jpg" name="fotoAluno" id="upload-foto-aluno">
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+</main>

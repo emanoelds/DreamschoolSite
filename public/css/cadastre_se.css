@@ -1,0 +1,46 @@
+.bg-custom-cad{
+    padding: 50px 0;
+}
+
+.bg-form-cad{
+    background: #ffffff;
+    border-radius: 300px 300px 300px 300px;
+    -webkit-border-radius: 300px 300px 300px 300px;
+    -moz-border-radius: 300px 300px 300px 300px;
+    padding: 60px 160px;
+}
+
+.upload-img-aluno{
+    display: none;
+}
+
+.picture-aluno{
+    display: flex;    
+    justify-content: center;
+    align-items: center;    
+    background: #ececec;
+    width: 200px;
+    height: 200px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.picture-aluno:hover{
+    background: #000000;
+    color: #ffffff;
+    transition: 0.4s;
+}
+
+.picture-img{
+    max-width: 100%;
+    border-radius: 200px;
+}
+
+@media (max-width: 550px){
+    .bg-form-cad{
+        border-radius: 20px;
+        padding: 40px;
+    }
+}

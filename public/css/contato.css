@@ -1,0 +1,90 @@
+body{
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+.navbar-custom {
+    background: #fd4b4b;
+}
+
+.navbar-nav .nav-link{
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link:hover{
+    color: #000438;
+}
+
+.text-location{
+    text-align: center;
+    color: #ffff;
+    padding: 20px 0px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+
+section.bg-contato-custom{
+    background: #292929;  
+    box-shadow: 0 0 7px 2px #000;  
+    border-radius: 80px;
+    padding-bottom: 80px;
+}
+
+.google-maps{
+    width: 100%;
+}
+
+.bg-link-contato{
+    background: #000233ab;
+}
+
+.fim-contato{
+    width: 100%;
+    height: 70px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;  
+}
+
+.footer-bg-custom{
+    background: #fd4b4b;
+    color: #ffffff;
+}
+
+.footer-bg-custom{
+    box-shadow: 0 -7px 0 #a30101;
+}
+
+@media (min-width: 576px) and (max-width: 767.99px) {
+    div.container-contatos a{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.99px) { 
+    .container-contatos a{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.99px) {
+    .container-contatos a{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-contatos a{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container-contatos a{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}

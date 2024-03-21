@@ -1,0 +1,44 @@
+<header class="sticky-top">
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img class="img-logo" src="/public/images/dream_logo3.png" alt="Logo-DreamSchool" width="80">
+            </a>
+
+            <div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="btn-home" href="/">
+                            <i class="fa-solid fa-house-chimney icon-home"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="bg-custom">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <form class="form-control rounded-5 mt-5 p-4" id="form-login" method="post" action="/indexController">
+                        <legend class="text-center mb-4 fw-semibold">Login</legend>
+                        <input class="form-control rounded-5 mb-3 text-center" type="text" name="usuario_admin" placeholder="Usuário">
+                        <input class="form-control rounded-5 mb-3 text-center" type="password" name="senha_admin" placeholder="Senha">
+
+                        <?php if (isset($_GET['login']) == 'error') { ?>
+                            <div class="text-error">
+                                <span>Usuário ou senha incorretos, Preencha os campos e tente novamente!</span>
+                            </div>
+                        <?php } ?>
+
+                        <!--<a class="lk-recupera-senha d-flex justify-content-center" href="/recuperar_senha_admin">Esqueceu a senha?</a> -->
+                        <button class="btn btn-danger rounded-5 w-100 mt-3" name="btnLoginAdmin" type="submit">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

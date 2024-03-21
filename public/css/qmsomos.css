@@ -1,0 +1,130 @@
+body{
+    background: #ffff;
+}
+
+.navbar-nav .nav-link{
+    color: #ffff;
+}
+
+.navbar-custom{
+    background: rgb(0, 9, 90);
+}
+
+.divisor{
+    background: #ffff;
+}
+
+.navbar-toggler{
+    color: #ffff;
+}
+
+.video-conhecimento{
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.quem-somos{
+    font-size: 15px;
+}
+
+.missao{
+    margin: 50px 0 0 0;
+}
+
+.bg-custom-conteudo{
+    background: #e0e0e096;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.footer-bg-custom{
+    margin-top: 60px;
+    background: #00042c;
+    color: #ffff;
+}
+
+@media (min-width: 250px) {
+    .quem-somos{
+        font-size: 15px;
+    }
+
+    .video-conhecimento{
+        margin: 30px 0 0 0;
+        width: 100%;
+        height: 300px;
+    }
+
+    .missao p{
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 576px) {    
+    .quem-somos{
+        font-size: 16px;
+    }
+
+    .video-conhecimento{
+        width: 515px;
+        height: 250px;
+    }
+
+    .missao p{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.99px) { 
+    .quem-somos{
+        font-size: 13px;
+    }
+
+    .video-conhecimento{
+        width: 350px;
+        height: 250px;
+    }
+
+    .missao p{
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 992px) {
+    .quem-somos{
+        font-size: 18px;
+    }
+
+    .video-conhecimento{
+        width: 380px;
+        height: 250px;
+    }
+
+    .missao p{
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .quem-somos{
+        font-size: 19px;
+    }
+
+    .video-conhecimento{
+        width: 500px;
+        height: 300px;
+    }
+
+    .missao p{
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .video-conhecimento{
+        width: 700px;
+        height: 400px;
+    }
+}
