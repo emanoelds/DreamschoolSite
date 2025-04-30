@@ -55,7 +55,7 @@ CREATE TABLE `user_admin` (
 --
 
 INSERT INTO `user_admin` (`id_admin`, `usuario_admin`, `senha_admin`, `email_admin`) VALUES
-(2, 'DS-ProfDS', '51ca6a097b552288d5ee599fd63bfea4af61d46a', '');
+(2, 'EmanoeDS', '123', '');
 
 -- --------------------------------------------------------
 
